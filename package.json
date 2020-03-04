@@ -1,0 +1,25 @@
+{
+  "name": "fileservice",
+  "version": "1.0.0",
+  "description": "\"# FileService\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/outlawdesigns-io/FileService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/outlawdesigns-io/FileService/issues"
+  },
+  "homepage": "https://github.com/outlawdesigns-io/FileService#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-fileupload": "^1.1.6",
+    "mime-types": "^2.1.26",
+    "outlawdesigns.io.noderecord": "^1.0.0"
+  }
+}
