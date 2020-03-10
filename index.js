@@ -2,6 +2,7 @@ const express = require('express');
 const fileupload = require('express-fileupload');
 const mime = require('mime-types');
 const http = require('https');
+const fs = require('fs');
 const config = require('./config');
 const Upload = require('./src/models/upload');
 const app = express();
