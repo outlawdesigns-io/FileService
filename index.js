@@ -68,6 +68,13 @@ app.post('/upload',async (req,res)=>{
   });
 });
 
-app.listen(config.LIVEPORT,()=>{
+https.createServer({
+  key: fs.readFileSync(config.SSLKEYPATH),
+  cert: fs.readFileSync(config.SSLCERTPATH)
+},app).listen(config.LIVEPORT,()=>{
   console.log('Listening on port: ' + config.LIVEPORT);
 });
+
+// app.listen(config.LIVEPORT,()=>{
+//   console.log('Listening on port: ' + config.LIVEPORT);
+// });
