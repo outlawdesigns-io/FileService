@@ -68,7 +68,7 @@ app.post('/upload',async (req,res)=>{
   });
 });
 
-https.createServer({
+http.createServer({
   key: fs.readFileSync(config.SSLKEYPATH),
   cert: fs.readFileSync(config.SSLCERTPATH)
 },app).listen(config.LIVEPORT,()=>{
