@@ -40,14 +40,12 @@ function _verifyToken(auth_token){
 
 
 app.use(fileupload());
+app.use(require('morgan')('combined'));
 
 app.post('/upload',async (req,res)=>{
-  console.log(req.params);
-  let user = null;
-  try{
-    user = await _verifyToken(req.headers.auth_token);
-  }catch(err){
-    return res.status(403).send(err);
+  let user = await _verifyToken(req.headers.auth_token);
+  if("error" in user){
+    return res.status(400).send(user.error);
   }
   if(!req.files || Object.keys(req.files).length === 0){
     return res.status(400).send('No files were uploaded');
@@ -60,7 +58,7 @@ app.post('/upload',async (req,res)=>{
   upload.id = uuid.uuid;
   upload.file_path = config.UPLOADDIR + fileName;
   upload.url = config.URLPREFIX + fileName;
-  upload.userId = String(user.UID);
+  upload.userId = user.UID;
   upload = await upload._create();
 
   sampleFile.mv(config.UPLOADDIR + fileName,(err)=>{
