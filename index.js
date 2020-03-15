@@ -63,7 +63,7 @@ app.post('/upload',async (req,res)=>{
   upload.userId = String(user.UID);
   upload = await upload._create();
 
-  sampleFile.mv(config.UPLOADDIR + '/' + fileName,(err)=>{
+  sampleFile.mv(config.UPLOADDIR + fileName,(err)=>{
     if(err) return res.status(500).send(err);
     res.send(upload._buildPublicObj());
   });
